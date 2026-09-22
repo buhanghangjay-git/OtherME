@@ -1,69 +1,270 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  Brain,
+  ChevronRight,
+  Clock3,
+  Cloud,
+  Code2,
+  Database,
+  FileText,
+  Lightbulb,
+  MessageSquareText,
+  Plus,
+  Sparkles,
+  Upload,
+} from "lucide-react";
 
-export default function Home() {
+const quickActions = [
+  {
+    title: "Ask your knowledge",
+    description: "Get answers grounded in your documents.",
+    icon: MessageSquareText,
+    color: "violet",
+    href: "/chat",
+  },
+  {
+    title: "Summarize",
+    description: "Turn long documents into clear key points.",
+    icon: FileText,
+    color: "blue",
+    href: "/study",
+  },
+  {
+    title: "Study Mode",
+    description: "Learn with quizzes, explanations, and flashcards.",
+    icon: Brain,
+    color: "orange",
+    href: "/study",
+  },
+  {
+    title: "Add Knowledge",
+    description: "Upload documents to your personal knowledge base.",
+    icon: Upload,
+    color: "green",
+    href: "/knowledge",
+  },
+];
+
+const recentKnowledge = [
+  {
+    title: "Azure Fundamentals",
+    description: "Cloud concepts, services and architectures.",
+    docs: 12,
+    icon: Cloud,
+    color: "blue",
+    href: "/knowledge",
+  },
+  {
+    title: "SQL & Databases",
+    description: "Queries, stored procedures and database concepts.",
+    docs: 8,
+    icon: Database,
+    color: "violet",
+    href: "/knowledge",
+  },
+  {
+    title: "Programming",
+    description: "Development notes and technical references.",
+    docs: 6,
+    icon: Code2,
+    color: "orange",
+    href: "/knowledge",
+  },
+];
+
+const todayStats = [
+  { value: "3", label: "Flashcards", detail: "Ready for review" },
+  { value: "1", label: "Quiz", detail: "Waiting to finish" },
+  { value: "2", label: "Tasks", detail: "Remaining today" },
+];
+
+// Placeholder/demo data only. Real analytics arrive with persistent storage.
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <>
+      <section className="hero">
+        <div>
+          <div className="eyebrow">
+            <Sparkles size={15} />
+            YOUR PERSONAL AI WORKSPACE
+          </div>
+
+          <h1>
+            Good afternoon, <span>Jay.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p>
+            Your knowledge is ready. What would you like to accomplish today?
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="hero-decoration">
+          <Sparkles size={25} />
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section>
+        <div className="section-heading">
+          <div>
+            <h2>Quick actions</h2>
+            <p>Start with what you need right now.</p>
+          </div>
+        </div>
+
+        <div className="quick-grid">
+          {quickActions.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <Link className="action-card" key={item.title} href={item.href}>
+                <div className={`action-icon icon-${item.color}`}>
+                  <Icon size={22} />
+                </div>
+
+                <div className="action-content">
+                  <strong>{item.title}</strong>
+                  <p>{item.description}</p>
+                </div>
+
+                <ChevronRight className="action-arrow" size={19} />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className="dashboard-grid">
+        <section className="daily-focus">
+          <div className="section-heading">
+            <div>
+              <div className="heading-with-icon">
+                <Lightbulb size={18} />
+                <h2>Daily focus</h2>
+              </div>
+
+              <p>Pick up where you left off.</p>
+            </div>
+
+            <Link className="text-button" href="/study">
+              View plan
+              <ChevronRight size={16} />
+            </Link>
+          </div>
+
+          <article className="focus-card">
+            <div className="focus-card-top">
+              <div className="focus-icon">
+                <Cloud size={25} />
+              </div>
+
+              <div className="focus-information">
+                <span className="category-badge">AZ-900</span>
+                <h3>Azure Fundamentals</h3>
+                <p>Continue learning Azure Storage services.</p>
+              </div>
+            </div>
+
+            <div className="progress-heading">
+              <span>Learning progress</span>
+              <strong>72%</strong>
+            </div>
+
+            <div className="progress-bar">
+              <span />
+            </div>
+
+            <div className="focus-bottom">
+              <div className="focus-meta">
+                <Clock3 size={15} />
+                <span>Continue from Azure Storage</span>
+              </div>
+
+              <Link className="continue-button" href="/study">
+                Continue studying
+                <ChevronRight size={17} />
+              </Link>
+            </div>
+          </article>
+        </section>
+
+        <aside className="today-card">
+          <div className="today-title">
+            <Sparkles size={18} />
+            <h2>Today</h2>
+          </div>
+
+          <div className="today-stats">
+            {todayStats.map((stat) => (
+              <div className="today-stat" key={stat.label}>
+                <span className="stat-number">{stat.value}</span>
+
+                <div>
+                  <strong>{stat.label}</strong>
+                  <p>{stat.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Link className="today-button" href="/tasks">
+            Open daily plan
+            <ChevronRight size={17} />
+          </Link>
+        </aside>
+      </div>
+
+      <section className="knowledge-section">
+        <div className="section-heading">
+          <div>
+            <h2>Recent knowledge</h2>
+            <p>Jump back into your most recent collections.</p>
+          </div>
+
+          <Link className="text-button" href="/knowledge">
+            View all
+            <ChevronRight size={16} />
+          </Link>
+        </div>
+
+        <div className="knowledge-grid">
+          {recentKnowledge.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <Link
+                className="knowledge-card"
+                key={item.title}
+                href={item.href}
+              >
+                <div className="knowledge-top">
+                  <div className={`knowledge-icon icon-${item.color}`}>
+                    <Icon size={21} />
+                  </div>
+
+                  <ChevronRight size={18} />
+                </div>
+
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+
+                <div className="document-count">
+                  <FileText size={15} />
+                  {item.docs} documents
+                </div>
+              </Link>
+            );
+          })}
+
+          <Link className="knowledge-card add-collection" href="/knowledge">
+            <div className="add-circle">
+              <Plus size={22} />
+            </div>
+
+            <h3>New collection</h3>
+            <p>Organize related documents and knowledge.</p>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

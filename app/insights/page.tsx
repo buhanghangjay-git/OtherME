@@ -3,7 +3,7 @@ import { BarChart3 } from "lucide-react";
 import FeaturePage from "../components/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "Insights | NexusAI",
+  title: "Insights | OtherME",
   description: "Learning and knowledge analytics for your workspace.",
 };
 

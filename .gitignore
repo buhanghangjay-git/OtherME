@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# NexusAI local document storage
+# OtherME local document storage
 /storage/documents/

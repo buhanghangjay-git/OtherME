@@ -370,7 +370,7 @@ export default function KnowledgePage() {
 
           <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500">
             Upload and organize the knowledge that will power your future
-            NexusAI conversations, study tools, and RAG retrieval.
+            OtherME conversations, study tools, and RAG retrieval.
           </p>
         </div>
 
@@ -470,7 +470,7 @@ export default function KnowledgePage() {
           <h2 className="mt-4 text-base font-semibold text-zinc-900">
             {isUploading
               ? "Uploading your knowledge..."
-              : "Add knowledge to NexusAI"}
+              : "Add knowledge to OtherME"}
           </h2>
 
           <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-500">
@@ -705,7 +705,7 @@ export default function KnowledgePage() {
 
             <p className="mx-auto mt-2 max-w-md text-xs leading-5 text-zinc-500">
               {documents.length === 0
-                ? "Upload your first PDF, DOCX, or TXT document to begin building your personal NexusAI knowledge base."
+                ? "Upload your first PDF, DOCX, or TXT document to begin building your personal OtherME knowledge base."
                 : "Try another search term or select a different collection."}
             </p>
 
@@ -846,11 +846,11 @@ export default function KnowledgePage() {
 
           <div>
             <h3 className="text-sm font-semibold text-zinc-900">
-              NexusAI RAG Pipeline
+              OtherME RAG Pipeline
             </h3>
 
             <p className="mt-1 text-xs leading-5 text-zinc-600">
-              Documents can now be sent to the NexusAI upload API. An
+              Documents can now be sent to the OtherME upload API. An
               &quot;Uploaded&quot; status means the server accepted the file.
               It does not yet mean the document has been parsed, embedded, or
               indexed for RAG.

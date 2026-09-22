@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 import {
   BarChart3,
   Bell,
@@ -20,47 +21,104 @@ import {
   X,
 } from "lucide-react";
 
+type AppShellProps = {
+  children: ReactNode;
+};
+
 const navigation = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Ask AI", href: "/chat", icon: MessageSquareText },
-  { name: "Knowledge", href: "/knowledge", icon: BookOpen },
-  { name: "Study", href: "/study", icon: Brain },
-  { name: "Notes", href: "/notes", icon: NotebookPen },
-  { name: "Tasks", href: "/tasks", icon: CheckSquare },
-  { name: "Insights", href: "/insights", icon: BarChart3 },
+  {
+    name: "Home",
+    href: "/",
+    icon: Home,
+  },
+  {
+    name: "Ask AI",
+    href: "/chat",
+    icon: MessageSquareText,
+  },
+  {
+    name: "Knowledge",
+    href: "/knowledge",
+    icon: BookOpen,
+  },
+  {
+    name: "Study",
+    href: "/study",
+    icon: Brain,
+  },
+  {
+    name: "Notes",
+    href: "/notes",
+    icon: NotebookPen,
+  },
+  {
+    name: "Tasks",
+    href: "/tasks",
+    icon: CheckSquare,
+  },
+  {
+    name: "Insights",
+    href: "/insights",
+    icon: BarChart3,
+  },
 ];
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppShell({ children }: AppShellProps) {
+  const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const closeSidebar = () => setSidebarOpen(false);
+  function closeSidebar() {
+    setSidebarOpen(false);
+  }
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+  function navigateTo(href: string) {
+    router.push(href);
+    closeSidebar();
+  }
+
+  function isActiveRoute(href: string) {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  }
 
   return (
-    <div className="app-shell">
+    <main className="app-shell">
       {sidebarOpen && (
         <button
           type="button"
           className="sidebar-overlay"
           onClick={closeSidebar}
-          aria-label="Close navigation"
+          aria-label="Close sidebar"
         />
       )}
 
       <aside className={sidebarOpen ? "sidebar sidebar-open" : "sidebar"}>
         <div className="sidebar-top">
-          <Link className="brand" href="/" onClick={closeSidebar}>
+          <button
+            type="button"
+            className="brand"
+            onClick={() => navigateTo("/")}
+            aria-label="Go to OtherME home"
+            style={{
+              border: 0,
+              background: "transparent",
+              cursor: "pointer",
+              textAlign: "left",
+            }}
+          >
             <div className="brand-icon">
               <Sparkles size={20} />
             </div>
+
             <div>
-              <div className="brand-name">NexusAI</div>
+              <div className="brand-name">OtherME</div>
               <div className="brand-tagline">Personal Intelligence</div>
             </div>
-          </Link>
+          </button>
 
           <button
             type="button"
@@ -74,20 +132,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
         <nav className="navigation" aria-label="Main navigation">
           <div className="nav-label">Workspace</div>
+
           {navigation.map((item) => {
             const Icon = item.icon;
-            const active = isActive(item.href);
+            const active = isActiveRoute(item.href);
+
             return (
-              <Link
+              <button
+                type="button"
                 key={item.href}
-                href={item.href}
                 className={active ? "nav-item nav-active" : "nav-item"}
-                onClick={closeSidebar}
+                onClick={() => navigateTo(item.href)}
                 aria-current={active ? "page" : undefined}
               >
                 <Icon size={19} strokeWidth={2} />
                 <span>{item.name}</span>
-              </Link>
+              </button>
             );
           })}
         </nav>
@@ -98,26 +158,35 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <div className="storage-icon">
                 <BookOpen size={17} />
               </div>
+
               <div>
                 <strong>Knowledge base</strong>
                 <p>26 documents indexed</p>
               </div>
             </div>
+
             <div className="storage-progress">
               <span />
             </div>
+
             <div className="storage-footer">
               <span>1.8 GB used</span>
               <span>5 GB</span>
             </div>
           </div>
 
-          <button type="button" className="profile-card">
+          <button
+            type="button"
+            className="profile-card"
+            aria-label="Open profile"
+          >
             <div className="avatar">J</div>
+
             <div className="profile-info">
               <strong>Jay</strong>
               <span>Personal workspace</span>
             </div>
+
             <ChevronRight size={17} />
           </button>
         </div>
@@ -137,30 +206,40 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
             <div className="search-box">
               <Search size={18} />
+
               <input
                 type="search"
                 placeholder="Search your knowledge..."
                 aria-label="Search your knowledge"
               />
+
               <kbd>Ctrl K</kbd>
             </div>
           </div>
 
           <div className="topbar-actions">
-            <button type="button" className="icon-button" aria-label="Notifications">
+            <button
+              type="button"
+              className="icon-button"
+              aria-label="Notifications"
+            >
               <Bell size={20} />
               <span className="notification-dot" />
             </button>
 
-            <Link className="new-button" href="/knowledge" onClick={closeSidebar}>
+            <button
+              type="button"
+              className="new-button"
+              onClick={() => navigateTo("/knowledge")}
+            >
               <Plus size={18} />
               <span>Add knowledge</span>
-            </Link>
+            </button>
           </div>
         </header>
 
-        <div className="dashboard">{children}</div>
+        {children}
       </section>
-    </div>
+    </main>
   );
 }

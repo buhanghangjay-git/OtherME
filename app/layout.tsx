@@ -3,7 +3,7 @@ import "./globals.css";
 import AppShell from "./components/AppShell";
 
 export const metadata: Metadata = {
-  title: "NexusAI | Personal Knowledge Assistant",
+  title: "OtherME | Personal Knowledge Assistant",
   description:
     "Your personal AI-powered knowledge, learning, and productivity workspace.",
 };

@@ -3,7 +3,7 @@ import { NotebookPen } from "lucide-react";
 import FeaturePage from "../components/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "Notes | NexusAI",
+  title: "Notes | OtherME",
   description: "Create personal notes and turn them into knowledge.",
 };
 

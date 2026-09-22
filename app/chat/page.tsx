@@ -3,7 +3,7 @@ import { MessageSquareText } from "lucide-react";
 import FeaturePage from "../components/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "Ask AI | NexusAI",
+  title: "Ask AI | OtherME",
   description: "Ask questions across your personal knowledge base.",
 };
 

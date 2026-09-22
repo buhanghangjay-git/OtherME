@@ -3,7 +3,7 @@ import { Brain } from "lucide-react";
 import FeaturePage from "../components/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "Study | NexusAI",
+  title: "Study | OtherME",
   description:
     "Learn your material with explanations, summaries, quizzes, and flashcards.",
 };

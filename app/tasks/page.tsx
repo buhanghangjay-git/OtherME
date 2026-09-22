@@ -3,7 +3,7 @@ import { CheckSquare } from "lucide-react";
 import FeaturePage from "../components/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "Tasks | NexusAI",
+  title: "Tasks | OtherME",
   description: "Turn your knowledge into actionable tasks.",
 };
 

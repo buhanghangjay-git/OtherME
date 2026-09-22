@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# OtherME local document storage
-/storage/documents/
+# OtherME local document and extraction storage
+/storage/

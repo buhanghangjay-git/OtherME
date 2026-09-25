@@ -2192,3 +2192,444 @@ textarea:focus-visible {
 :root:not([data-theme="light"]) .progress-bar {
   background: rgba(255, 255, 255, 0.14);
 }
+
+/* =========================================================
+   OTHERME COMPACT MOBILE DASHBOARD
+   ========================================================= */
+
+@media (max-width: 640px) {
+  /*
+   * Overall dashboard density
+   */
+
+  .dashboard {
+    padding: 14px 2px 24px;
+  }
+
+  .dashboard > section {
+    margin-bottom: 18px;
+  }
+
+  /*
+   * Compact hero
+   */
+
+  .hero {
+    min-height: 0;
+
+    margin-bottom: 18px;
+    padding: 20px 18px;
+
+    border-radius: 18px;
+  }
+
+  .hero h1 {
+    margin: 7px 0 5px;
+
+    font-size: 26px;
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+
+  .hero p {
+    max-width: 100%;
+
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .eyebrow {
+    gap: 5px;
+
+    font-size: 8px;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-decoration {
+    display: none;
+  }
+
+  /*
+   * Section headings
+   */
+
+  .section-heading {
+    align-items: center;
+
+    margin-bottom: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: 13px;
+  }
+
+  .section-heading p {
+    margin-top: 2px;
+
+    font-size: 8px;
+  }
+
+  /*
+   * Quick actions become a compact 2 × 2 grid
+   */
+
+  .quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+  }
+
+  .action-card {
+    min-height: 96px;
+
+    display: block;
+
+    padding: 12px;
+
+    border-radius: 14px;
+  }
+
+  .action-icon {
+    width: 32px;
+    height: 32px;
+
+    margin-bottom: 9px;
+
+    border-radius: 9px;
+  }
+
+  .action-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .action-content strong {
+    font-size: 9.5px;
+    line-height: 1.25;
+  }
+  .action-content p {
+    display: -webkit-box;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    font-size: 7.5px;
+    line-height: 1.4;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .action-arrow {
+    position: absolute;
+    top: 12px;
+    right: 11px;
+  }
+
+  .action-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /*
+   * Daily Focus
+   */
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+  }
+
+  .focus-card {
+    padding: 14px;
+
+    border-radius: 15px;
+  }
+
+  .focus-card-top {
+    gap: 10px;
+  }
+
+  .focus-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+  }
+
+  .focus-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .focus-information h3 {
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+  .focus-information p {
+    font-size: 8px;
+  }
+
+  .category-badge {
+    padding: 2px 6px;
+
+    font-size: 6.5px;
+  }
+
+  .progress-heading {
+    margin-top: 12px;
+
+    font-size: 7.5px;
+  }
+
+  .progress-bar {
+    height: 5px;
+
+    margin-top: 5px;
+  }
+
+  .focus-bottom {
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 11px;
+  }
+
+  .focus-meta,
+  .focus-bottom a {
+    font-size: 7px;
+  }
+
+  /*
+   * Today card
+   */
+
+  .today-card {
+    padding: 14px;
+
+    border-radius: 15px;
+  }
+
+  .today-title h2 {
+    font-size: 11px;
+  }
+
+  .today-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+
+    margin: 10px 0;
+  }
+
+  .today-stat {
+    min-width: 0;
+
+    display: block;
+
+    padding: 8px;
+
+    text-align: center;
+  }
+
+  .stat-number {
+    width: 28px;
+    height: 28px;
+
+    margin: 0 auto 5px;
+
+    font-size: 10px;
+  }
+
+  .today-stat strong {
+    overflow: hidden;
+
+    font-size: 7.5px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .today-stat p {
+    display: none;
+  }
+
+  .today-card > a {
+    padding: 7px;
+
+    font-size: 7.5px;
+  }
+
+  /*
+   * Recent Knowledge
+   *
+   * Keep this readable without making each card huge.
+   */
+
+  .knowledge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .knowledge-card,
+  .add-knowledge-card {
+    min-height: 120px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+  }
+
+  .knowledge-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+  }
+
+  .knowledge-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .knowledge-card h3,
+  .add-knowledge-card h3 {
+    margin-top: 9px;
+
+    font-size: 9px;
+  }
+  .knowledge-card p,
+  .add-knowledge-card p {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    font-size: 7.5px;
+    line-height: 1.4;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .document-count {
+    margin-top: 8px;
+
+    font-size: 7px;
+  }
+
+  .add-circle {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* =========================================================
+   EXTRA SMALL PHONE TUNING
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .main-content {
+    padding: 7px;
+  }
+
+  /*
+   * Compact mobile navigation bar
+   */
+
+  .topbar {
+    min-height: 54px;
+
+    gap: 5px;
+
+    padding: 7px;
+  }
+
+  .topbar-left {
+    gap: 5px;
+  }
+
+  .menu-button,
+  .icon-button,
+  .new-button,
+  .topbar-actions > a {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+  }
+
+  .search-box {
+    height: 34px;
+
+    padding: 6px 8px;
+  }
+
+  .search-box svg {
+    width: 15px;
+    height: 15px;
+
+    flex-shrink: 0;
+  }
+
+  .search-box input {
+    font-size: 8px;
+  }
+
+  .search-box kbd {
+    display: none;
+  }
+
+  .topbar-actions {
+    gap: 4px;
+  }
+
+  .topbar-actions .new-button span,
+  .topbar-actions > a span {
+    display: none;
+  }
+
+  /*
+   * Hero
+   */
+
+  .hero {
+    margin-bottom: 16px;
+    padding: 18px 16px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  /*
+   * Cards
+   */
+
+  .quick-grid {
+    gap: 7px;
+  }
+
+  .action-card {
+    min-height: 92px;
+
+    padding: 11px;
+  }
+
+  .knowledge-card,
+  .add-knowledge-card {
+    min-height: 112px;
+
+    padding: 11px;
+  }
+}
